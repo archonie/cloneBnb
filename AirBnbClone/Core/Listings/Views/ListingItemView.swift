@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct ListingItemView: View {    
+struct ListingItemView: View {
+    let listing: Listing
     var body: some View {
         VStack(spacing: 8) {
             // images
-            ListingImageCarouselView()
+            ListingImageCarouselView(listing: listing)
                 .cornerRadius(10)
                 .frame(height: 320)
             // listing details
             HStack(alignment: .top) {
                 // details
                 VStack(alignment: .leading) {
-                    Text("Miami, Florida")
+                    Text("\(listing.city), \(listing.state)")
                         .fontWeight(.semibold)
                         .foregroundColor(.black)
                     Text("12 mi away")
@@ -26,7 +27,7 @@ struct ListingItemView: View {
                     Text("Nov 3 - 10")
                         .foregroundStyle(.gray)
                     HStack(spacing: 4) {
-                        Text("$567")
+                        Text("$\(listing.pricePerNight)")
                             .fontWeight(.semibold)
                         Text("night")
                     }
@@ -37,7 +38,7 @@ struct ListingItemView: View {
                 // rating
                 HStack(spacing: 2) {
                     Image(systemName: "star.fill")
-                    Text("4.5")
+                    Text("\(listing.rating.numberWith2DecimalPlaces())")
                 }
                 .foregroundColor(.black)
             }
@@ -48,5 +49,5 @@ struct ListingItemView: View {
 }
 
 #Preview {
-    ListingItemView()
+    ListingItemView(listing: DeveloperPreview.shared.listings[0])
 }
