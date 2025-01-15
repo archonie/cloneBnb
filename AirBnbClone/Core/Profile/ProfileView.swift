@@ -18,18 +18,7 @@ struct ProfileView: View {
                         .fontWeight(.semibold)
                     Text("Log in to start planning your next trip.")
                 }
-                Button {
-                    print("log in")
-                } label: {
-                    Text("Log in")
-                        .foregroundStyle(.white)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .frame(width: 360, height: 48)
-                        .background(.pink)
-                        .cornerRadius(8)
-                    
-                }
+                LoginButton()
                 HStack {
                     Text("Don't have an account?")
                     Text("Sign up")
